@@ -1,0 +1,39 @@
+[package]
+name = "axiom-omega-sovereign"
+version = "1.0.0"
+edition = "2021"
+authors = ["Dalton Rosenberg"]
+description = "The complete Axiom Omega Protocol - Sovereign AI Stack built by Dalton Rosenberg directing Grok, Claude, and Gemini over 1.5 years"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/redbrickyarl-web/axiom-omega-sovereign"
+readme = "README.md"
+
+[lib]
+name = "axiom_omega"
+path = "src/lib.rs"
+
+[[bin]]
+name = "axiom-sovereign"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[dependencies]
+tokio = { version = "1.40", features = ["full"] }
+crossbeam = "0.8"
+parking_lot = "0.12"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwest = { version = "0.12", features = ["json"] }
+thiserror = "1.0"
+log = "0.4"
+env_logger = "0.11"
+uuid = { version = "1.0", features = ["v4", "serde"] }
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+tokio-test = "0.4"
